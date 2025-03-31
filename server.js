@@ -8,6 +8,11 @@ app.use(express.json()); // Middleware to parse JSON requests
 let funds = 0;
 let transactions = [];
 
+// ✅ Root Route (Fix for "Cannot GET /")
+app.get("/", (req, res) => {
+    res.send("MATSALA API is running!");
+});
+
 // 1️⃣ Accept Donations
 app.post("/donate", (req, res) => {
     const { amount, method } = req.body;
